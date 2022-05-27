@@ -1,0 +1,19 @@
+@import '../styles';
+
+#main {
+  margin-left: 4vw;
+  
+  width: 92vw;
+  display: grid;
+  grid-template-columns: 30vw 60vw;
+}
+
+.main-title {
+  margin-left: 4vw;
+  margin-top: 4vw;
+  margin-bottom: 25px;
+
+  color: $base-color;
+  font-size: $h1-size;
+  font-weight: 700;
+}

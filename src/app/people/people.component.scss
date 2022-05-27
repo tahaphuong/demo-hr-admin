@@ -1,0 +1,63 @@
+@import '../../styles';
+
+.sort-btn {
+  cursor: pointer;
+  margin-top: 10px;
+  padding: 3px 7px;
+
+  font-size: 12px; 
+  color: $secondary-color;
+  transition: transform 0.2s, opacity 0.2s;
+
+  border: 0.5px solid $secondary-color;
+  border-radius: 200px;
+}
+.sort-btn:hover {
+  transform: translateY(-2px);
+}
+.sort-btn:active {
+  opacity: 0.7;
+}
+.selected {
+  background-color: $base-color;
+}
+
+.list-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.section-title {
+  margin-bottom: 15px;
+
+  color: $base-color;
+  font-size: $h2-size;
+  font-weight: 700;
+}
+
+.person-tile {
+  cursor: pointer;
+
+  background-color: white;
+  margin-bottom: 10px;
+  padding: 12px;
+  border-radius: 5px;
+
+  display: flex;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.person-tile:hover {
+  background-color: lavender
+}
+
+.person-tile .badge {
+  width: 50px;
+  color: $secondary-color
+}
+
+.person-tile .name {
+  width: 30%;
+}

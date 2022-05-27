@@ -1,0 +1,27 @@
+<div *ngIf="person">
+  <div>
+    <span>First name: </span>
+    <span *ngIf="!editMode">{{person.firstname}}</span>
+    <span *ngIf="editMode"><input [(ngModel)]="editingPerson.firstname" type="text"></span>
+  </div>
+  <div>
+    <span>Surname: </span>
+    <span *ngIf="!editMode">{{person.surname}}</span>
+    <span *ngIf="editMode"><input [(ngModel)]="editingPerson.surname" type="text"></span>
+  </div>
+  <div>
+    <span>E-Mail: </span>
+    <span *ngIf="!editMode">{{person.email}}</span>
+    <span *ngIf="editMode"><input [(ngModel)]="editingPerson.email" type="email"></span>
+  </div>
+</div>
+
+<div *ngIf="!editMode" style="margin-top: 8px;">
+  <button type="button" (click)="editMode = true" style="margin-right: 5px;">✏️ Edit</button>
+  <button type="button" (click)="deletePerson()">🗑️ Delete</button>
+</div>
+
+<div *ngIf="editMode" style="margin-top: 8px;">
+  <button type="button" (click)="editMode = false" style="margin-right: 5px;">Cancel</button>
+  <button type="button" (click)="editMode = false; savePerson()">✔️ Save</button>
+</div>
