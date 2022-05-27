@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Person } from '../Person';
 import { PersonService } from '../person-service/person.service';
 
@@ -9,6 +9,8 @@ import { PersonService } from '../person-service/person.service';
   styleUrls: ['./person-form.component.scss']
 })
 export class PersonFormComponent implements OnInit {
+
+  @Output() onReload: EventEmitter<any> = new EventEmitter();
 
   person: Person = {
     id: 0,
@@ -23,18 +25,20 @@ export class PersonFormComponent implements OnInit {
   }
 
   savePerson(): void {
-
     if (this.validate()) {
       this.person.id = new Date().getTime();
-      this.personService.addPerson(this.person).subscribe(
+      this.personService.addPerson(this.person).subscribe(() => {
+        this.person.firstname = "";
+        this.person.surname = "";
+        this.person.email = "";
 
-      )
+        this.onReload.emit()
+      })
     }
-
-  
   }
 
   validate(): Boolean {
+    console.log(this.person)
     if (this.person.firstname.trim().length == 0)
       return false;
     if (this.person.surname.trim().length == 0)

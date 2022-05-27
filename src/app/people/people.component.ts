@@ -10,13 +10,17 @@ import { PersonService } from '../person-service/person.service';
 export class PeopleComponent implements OnInit {
 
   people: Person[] = []
-
   selectedPerson?: Person
+
+  constructor(private personService : PersonService) { }
+
+  ngOnInit(): void {
+    this.getPeople()
+  }
+  
   onSelect(person: Person): void {
     this.selectedPerson = person
   }
-
-  constructor(private personService : PersonService) { }
 
   getPeople(): void {
     this.personService.getPeople().subscribe(people => this.people = people);
@@ -31,8 +35,10 @@ export class PeopleComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void {
-    this.getPeople()
+  setUpdatedPerson(updatedPerson: Person) {
+    let personIndex = this.people.findIndex(p => p.id == updatedPerson.id)
+    this.people[personIndex] = updatedPerson;
+    this.selectedPerson = updatedPerson;
   }
 
 }

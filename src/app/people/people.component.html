@@ -1,15 +1,26 @@
-<div class="list-header">
-  <div class="section-title">List</div>
+<div id="main">
+  <app-person-form (onReload)="getPeople()"></app-person-form>
+
   <div>
-    <button class="sort-btn" type="button">Sort by name 🡫</button>
+    <div class="list-header">
+      <div class="section-title">List</div>
+      <div>
+        <button class="sort-btn" type="button">Sort by name 🡫</button>
+      </div>
+    </div>
+    
+    <div class="people" style="list-style-type:none;">
+      <div *ngFor="let p of people" class="person-tile" (click)="onSelect(p)" [class.selected]="p === selectedPerson">
+        <div class="badge">{{p.id}}</div>
+        <div class="name">{{p.firstname + " " + p.surname}}</div>
+        <app-person-detail 
+          (onUpdate)="setUpdatedPerson($event)"
+          (onReload)="getPeople()" 
+          *ngIf="p === selectedPerson" 
+          [person]="selectedPerson"
+          ></app-person-detail>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="people" style="list-style-type:none;">
-  <div *ngFor="let p of people" class="person-tile" (click)="onSelect(p)" [class.selected]="p === selectedPerson">
-    <div class="badge">{{p.id}}</div>
-    <div class="name">{{p.firstname + " " + p.surname}}</div>
-    
-    <app-person-detail *ngIf="p === selectedPerson" [person]="selectedPerson" [getPeople]="getPeople"></app-person-detail>
-  </div>
-</div>

@@ -30,22 +30,22 @@ export class PersonService {
     );
   }
 
-  updatePerson(person: Person): Observable<any> {
-    return this.http.put(this.peopleUrl, person, this.httpOptions).pipe(
-      catchError(this.handleError<any>('updatePerson'))
-    );
-  }
-
   addPerson(person: Person): Observable<Person> {
     return this.http.post<Person>(this.peopleUrl, person, this.httpOptions).pipe(
       catchError(this.handleError<Person>('addPerson'))
     );
   }
 
+  updatePerson(person: Person): Observable<any> {
+    const url = `${this.peopleUrl}/${person.id}`;
+
+    return this.http.put(url, person, this.httpOptions).pipe(
+      catchError(this.handleError<any>('updatePerson'))
+    );
+  }
+
   deletePerson(id: number) {
-    console.log("id", id)
     const url = `${this.peopleUrl}/${id}`;
-    console.log(url)
     return this.http.delete(url).pipe(
       catchError(this.handleError<Person>('deletePerson'))
     );

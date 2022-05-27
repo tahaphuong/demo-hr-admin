@@ -17,7 +17,7 @@
 </div>
 
 <div *ngIf="!editMode" style="margin-top: 8px;">
-  <button type="button" (click)="editMode = true" style="margin-right: 5px;">✏️ Edit</button>
+  <button type="button" (click)="setInputValue(); editMode = true" style="margin-right: 5px;">✏️ Edit</button>
   <button type="button" (click)="deletePerson()">🗑️ Delete</button>
 </div>
 

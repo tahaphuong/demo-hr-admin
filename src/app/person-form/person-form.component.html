@@ -3,20 +3,20 @@
 <div>
   <div class="input-field">
     <div class="input-field-label">First name</div>
-    <input #firstname />
+    <input [(ngModel)]="person.firstname" />
   </div>
 
   <div class="input-field">
     <div class="input-field-label">Surname</div>
-    <input #surname />
+    <input [(ngModel)]="person.surname" />
   </div>
 
   <div class="input-field">
     <div class="input-field-label">E-Mail</div>
-    <input #email type="email"/>
+    <input [(ngModel)]="person.email" type="email"/>
   </div>
   
-  <button type="button" class="add-button" (click)="firstname.value = ''">
+  <button type="button" class="add-button" (click)="savePerson()">
     Add person
   </button>
 </div>

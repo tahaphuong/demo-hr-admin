@@ -1,5 +1,13 @@
 @import '../../styles';
 
+#main {
+  margin-left: 4vw;
+  
+  width: 92vw;
+  display: grid;
+  grid-template-columns: 30vw 60vw;
+}
+
 .sort-btn {
   cursor: pointer;
   margin-top: 10px;
@@ -54,7 +62,7 @@
 }
 
 .person-tile .badge {
-  width: 50px;
+  width: 120px;
   color: $secondary-color
 }
 
